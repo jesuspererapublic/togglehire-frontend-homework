@@ -8,6 +8,7 @@
     "react-scripts": "4.0.2"
   },
   "scripts": {
+    "lint": "stylelint --fix src/**/*.css && eslint --fix src/**/*.js && prettier --write src/",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -27,5 +28,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "8.5.0",
+    "prettier": "2.7.1",
+    "stylelint": "^14.14.1",
+    "stylelint-config-prettier": "9.0.4",
+    "stylelint-config-standard": "^29.0.0"
   }
 }

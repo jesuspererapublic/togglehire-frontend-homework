@@ -1,0 +1,16 @@
+.sfh-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 16px 0;
+}
+
+.sfh-ul {
+    display: flex;
+    flex-direction: column;
+    list-style: disc;
+}
+
+.sfh-li {
+    margin: 2px 0;
+}

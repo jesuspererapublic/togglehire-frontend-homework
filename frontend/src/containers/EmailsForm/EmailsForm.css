@@ -1,0 +1,7 @@
+.emails-form {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 16px 0;
+    gap: 16px;
+}

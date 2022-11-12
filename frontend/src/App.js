@@ -1,7 +1,8 @@
 import React from 'react';
+import { EmailsForm } from './containers/EmailsForm/EmailsForm';
 
 function App() {
-  return <div>Implement me!</div>;
+    return <EmailsForm />;
 }
 
 export default App;
