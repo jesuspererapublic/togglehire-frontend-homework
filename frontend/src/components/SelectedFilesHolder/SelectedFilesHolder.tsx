@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './SelectedFilesHolder.css';
+import { useRecoilValue } from 'recoil';
+import { fileAtom } from '../../contexts/file/fileAtom';
 import { fileRepository } from '../../contexts/file/fileRepository';
 
-export const SelectedFilesHolder = ({ files }) => {
-    const extractFileNames = (files) => files.map((file) => file.name);
-    const [extraFileInfo, setExtraFileInfo] = useState([]);
+export const SelectedFilesHolder = (): JSX.Element | null => {
+    const files = useRecoilValue(fileAtom);
+    const extractFileNames = (files: File[]) => files.map((file) => file.name);
+    const [extraFileInfo, setExtraFileInfo] = useState<number[]>([]);
 
     useEffect(() => {
         const getFileInfo = async () => {
@@ -21,10 +24,10 @@ export const SelectedFilesHolder = ({ files }) => {
     }
 
     return (
-        <div className='sfh-container'>
-            <ul className='sfh-ul'>
+        <div className="sfh-container">
+            <ul className="sfh-ul">
                 {extractFileNames(files).map((fileName, i) => (
-                    <li className='sfh-li' key={`${i}${fileName}`}>
+                    <li className="sfh-li" key={`${i}${fileName}`}>
                         {fileName} - {`(${extraFileInfo[i]} valid emails)`}
                     </li>
                 ))}

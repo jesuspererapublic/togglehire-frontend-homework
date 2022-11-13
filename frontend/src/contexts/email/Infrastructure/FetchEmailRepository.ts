@@ -1,8 +1,14 @@
-import { SERVER_URL } from '../../constants';
+import { SERVER_URL } from '../../../constants';
+import { EmailRepository } from '../Domain/EmailRepository';
 
-export const emailRepository = {
+export interface IServerResponse {
+    status: number;
+    emails: string[];
+}
+
+export const fetchEmailRepository: EmailRepository = {
     postEmails: async (emails) => {
-        const jsonBody = { emails };
+        const jsonBody = { emails: emails.map(email => email.email) };
 
         const fetchOptions = {
             method: 'POST',
@@ -15,11 +21,12 @@ export const emailRepository = {
         const result = await fetch(SERVER_URL, fetchOptions);
 
         if (result.status === 200) {
-            return { status: result.status };
+            return { status: result.status, emails: [] };
         }
 
         const errorResponse = await result.json();
 
         return { status: result.status, ...errorResponse };
-    },
-};
+    }
+
+}
